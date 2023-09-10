@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Anime Images</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <img id="image" width="400" height="600">
+    <button id="button" onclick="getRandomAnimeImage()">Random</button>
+    <script>
+      body = document.querySelector('body')
+      body.onload = getRandomAnimeImage()
+
+
+      function getRandomAnimeImage(){
+        url = "https://catboys.com/api/img"
+
+        fetch(url)
+          .then((response) => response.json())
+          .then((json) => display_image(json.url))
+          .catch(function(error){
+            console.log("Error: " + error)
+          })
+        
+        function display_image(image){
+          document.getElementById("image").src = image
+        }        
+      }
+    </script>
+
+  </body>
+</html>
